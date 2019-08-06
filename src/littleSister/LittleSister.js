@@ -8,8 +8,11 @@ class LittleSister extends Component {
     super(props)
     this.state = {
       inputValue: '',
-      list: ['Shampoo', 'Footbath']
+      list: []
     }
+    this.handleInput = this.handleInput.bind(this)
+    this.inputChange = this.inputChange.bind(this)
+    // this.delInputValue = this.delInputValue(this)
   }
 
 	render () {
@@ -21,8 +24,8 @@ class LittleSister extends Component {
             绑定数据: this.state.inputValue 
             绑定方法: this.inputChange
           */}
-          <input type="text" value={this.state.inputValue} onChange={this.inputChange.bind(this)} />
-          <button onClick={this.handleInput.bind(this)}>Server</button>
+          <input type="text" value={this.state.inputValue} onChange={this.inputChange} />
+          <button onClick={this.handleInput}>Server</button>
         </div>
         <ul>
           {
@@ -30,7 +33,9 @@ class LittleSister extends Component {
               return (
                 <LittleSisterItem
                   key={index+item}
+                  index={index}
                   content={item}
+                  delInputValue={this.delInputValue.bind(this)}
                 />
               ) 
             })
@@ -40,7 +45,7 @@ class LittleSister extends Component {
 		)
   }
   
-  // 数据方法
+  // 数据更新方法
   inputChange (e) {
     this.setState({
       inputValue: e.target.value
