@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
 class LittleSisterItem extends Component {
+
 	// 生命周期-构造函数-首先执行
 	constructor (props) {
 		// 🚫  还不能使用 `this`
@@ -12,6 +13,29 @@ class LittleSisterItem extends Component {
 		// ✅  现在可以了
 		this.delInputValue = this.delInputValue.bind(this)
 	}
+
+	// componentWillReceiveProps () {
+	// 	console.log('child-componentWillReceiveProps----更新到 prop 值')
+	// }
+
+	// componentWillUnmount () {
+	// 	console.log('child-componentWillUnmount----组件将要被删除时')
+	// }
+
+	 // 解决性能问题
+	 // 就是指明什么时候component（组件）需要进行更新。
+	 // 判断即将更新后的值是否与原有的数据相等，相等的话 即不更新，不相等的就更新
+	 shouldComponentUpdate (nextProps, nextState) {
+			if (nextProps.content !== this.props.content) {
+				return true
+			} else {
+				return false
+			}
+			// return nextProps.content !== this.props.content
+			// console.log('shouldComponentUpdate----组件更新之前执行')
+  	} 
+
+
 	render() { 
 		return (
 			// dangerouslySetInnerHTML={{__html:item}}

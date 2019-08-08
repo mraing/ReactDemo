@@ -14,3 +14,49 @@ li {
     border-radius: 5px;
     background: #eee
 }
+
+.default {
+    opacity: 0;
+    transition: all 1.5s  ease-out;
+}
+
+.active {
+    opacity: 1;
+    transition: all 1.5s  ease-in;
+}
+
+
+/* 
+    **-enter: 入场开始的样式
+    **-enter-active: 入场后 - 入场结束时 的样式
+    **-enter-done: 入场结束的样式
+
+    **-exit: 出场开始的样式
+    **-exit-active: 开始出场后 - 出场结束时 的样式
+    **-exit-done: 出场结束的样式
+*/
+
+.boss-text-enter {
+    opacity: 0;
+    color: #fff;
+}
+.boss-text-enter-active {
+    opacity: 1; 
+    color: #000;
+    transition: opacity 2000ms;
+}
+.boss-text-enter-done{
+    opacity: 1; 
+}
+.boss-text-exit {
+    opacity: 1; 
+    color: #000;
+}
+.boss-text-exit-active {
+    opacity: 0;
+    color: #fff;
+    transition: opacity 2000ms;
+}
+.boss-text-exit-done {
+    opacity: 0;
+}
